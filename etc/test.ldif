@@ -1,0 +1,21 @@
+version: 1
+
+dn: dc=lsc-project,dc=org
+dc: lsc-project
+o: LSC Project
+objectClass: dcObject
+objectClass: organization
+objectClass: top
+description: lsc-project naming context
+
+dn: ou=src,dc=lsc-project,dc=org
+ou: People
+objectClass: organizationalUnit
+objectClass: top
+description: People subtree
+
+dn: ou=dest,dc=lsc-project,dc=org
+ou: People
+objectClass: organizationalUnit
+objectClass: top
+description: People subtree

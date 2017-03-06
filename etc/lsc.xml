@@ -1,0 +1,92 @@
+<?xml version="1.0" ?>
+<lsc xmlns="http://lsc-project.org/XSD/lsc-core-2.1.xsd" revision="0">
+	<connections>
+		<ldapConnection>
+			<name>src-ldap</name>
+			<url>ldap://localhost:33389/dc=lsc-project,dc=org</url>
+			<username>cn=Directory Manager</username>
+			<password>secret</password>
+			<authentication>SIMPLE</authentication>
+			<referral>IGNORE</referral>
+			<derefAliases>NEVER</derefAliases>
+			<version>VERSION_3</version>
+			<pageSize>-1</pageSize>
+			<factory>com.sun.jndi.ldap.LdapCtxFactory</factory>
+			<tlsActivated>false</tlsActivated>
+			<saslMutualAuthentication>false</saslMutualAuthentication>
+		</ldapConnection>
+		<ldapConnection>
+			<name>dst-ldap</name>
+			<url>ldap://localhost:33389/dc=lsc-project,dc=org</url>
+			<username>cn=Directory Manager</username>
+			<password>secret</password>
+			<authentication>SIMPLE</authentication>
+			<referral>IGNORE</referral>
+			<derefAliases>NEVER</derefAliases>
+			<version>VERSION_3</version>
+			<pageSize>-1</pageSize>
+			<factory>com.sun.jndi.ldap.LdapCtxFactory</factory>
+			<tlsActivated>false</tlsActivated>
+			<saslMutualAuthentication>false</saslMutualAuthentication>
+		</ldapConnection>
+		<!-- <databaseConnection> <name>src-jdbc</name> <url>jdbc:hsqldb:file:hsqldb/lsc</url> 
+			<username>sa</username> <password></password> <driver>org.hsqldb.jdbcDriver</driver> 
+			</databaseConnection> -->
+	</connections>
+	<audits></audits>
+	<tasks>
+		<task>
+			<name>ldapToldap</name>
+			<bean>org.lsc.beans.SimpleBean</bean>
+			<ldapSourceService>
+				<name>src-ldap-service</name>
+				<connection reference="src-ldap" />
+				<baseDn>ou=src,dc=lsc-project,dc=org</baseDn>
+				<pivotAttributes >
+					<string>cn</string>
+					<string>sn</string>
+				</pivotAttributes>
+				<fetchedAttributes>
+					<string>description</string>
+					<string>cn</string>
+					<string>sn</string>
+					<string>userPassword</string>
+					<string>telephoneNumber</string>
+					<string>mail</string>
+				</fetchedAttributes>
+				<getAllFilter>(&amp;(sn=*))</getAllFilter>
+				<getOneFilter>(sn={sn})</getOneFilter>
+			</ldapSourceService>
+			<ldapDestinationService>
+				<name>dst-ldap-service</name>
+				<connection reference="dst-ldap" />
+				<baseDn>ou=dst,dc=lsc-project,dc=org</baseDn>
+				<pivotAttributes>
+					<string>cn</string>
+					<string>sn</string>
+				</pivotAttributes>
+				<fetchedAttributes>
+					<string>description</string>
+					<string>cn</string>
+					<string>sn</string>
+					<string>userPassword</string>
+					<string>telephoneNumber</string>
+				</fetchedAttributes>
+				<getAllFilter>(&amp;(sn=*))</getAllFilter>
+				<getOneFilter>(sn={sn})</getOneFilter>
+			</ldapDestinationService>
+			<propertiesBasedSyncOptions>
+				<mainIdentifier>"cn=" + srcBean.getDatasetFirstValueById("cn") + ",ou=dst,dc=lsc-project,dc=org"</mainIdentifier>
+				<defaultDelimiter>;</defaultDelimiter>
+				<defaultPolicy>FORCE</defaultPolicy>
+			</propertiesBasedSyncOptions>
+		</task>
+	</tasks>
+	<!-- <security>
+		<encryption>
+			<keyfile>etc/lsc.key</keyfile>
+			<algorithm>AES</algorithm>
+			<strength>128</strength>
+		</encryption>
+	</security> -->
+</lsc>
