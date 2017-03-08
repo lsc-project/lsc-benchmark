@@ -75,8 +75,6 @@ public class LdapToLdapSyncBenchmark extends AbstractSyncBenchmark {
 				new ArrayList<String>(){{add(TASK_NAME);}},
 				new ArrayList<String>()
 		);
-		
-		LOGGER.info("Finished synchronizing data; " + dstJndiServices.getListPivots().size() + " entries in dst.");
 	}
 
 	@TearDown(Level.Trial)
