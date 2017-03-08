@@ -1468,7 +1468,7 @@ ds-cfg-password-attribute: userPassword
 ds-cfg-default-password-storage-scheme: cn=Salted SHA-1,cn=Password Storage Schemes,cn=config
 ds-cfg-allow-expired-password-changes: false
 ds-cfg-allow-multiple-password-values: false
-ds-cfg-allow-pre-encoded-passwords: false
+ds-cfg-allow-pre-encoded-passwords: true
 ds-cfg-allow-user-password-changes: true
 ds-cfg-expire-passwords-without-warning: false
 ds-cfg-force-change-on-add: false
@@ -1501,7 +1501,7 @@ ds-cfg-password-attribute: userPassword
 ds-cfg-default-password-storage-scheme: cn=Salted SHA-512,cn=Password Storage Schemes,cn=config
 ds-cfg-allow-expired-password-changes: false
 ds-cfg-allow-multiple-password-values: false
-ds-cfg-allow-pre-encoded-passwords: false
+ds-cfg-allow-pre-encoded-passwords: true
 ds-cfg-allow-user-password-changes: true
 ds-cfg-expire-passwords-without-warning: false
 ds-cfg-force-change-on-add: false

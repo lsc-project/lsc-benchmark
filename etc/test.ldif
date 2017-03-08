@@ -14,7 +14,7 @@ objectClass: organizationalUnit
 objectClass: top
 description: People subtree
 
-dn: ou=dest,dc=lsc-project,dc=org
+dn: ou=dst,dc=lsc-project,dc=org
 ou: People
 objectClass: organizationalUnit
 objectClass: top

@@ -53,6 +53,7 @@
 					<string>userPassword</string>
 					<string>telephoneNumber</string>
 					<string>mail</string>
+					<string>objectClass</string>
 				</fetchedAttributes>
 				<getAllFilter>(&amp;(sn=*))</getAllFilter>
 				<getOneFilter>(sn={sn})</getOneFilter>
@@ -71,6 +72,7 @@
 					<string>sn</string>
 					<string>userPassword</string>
 					<string>telephoneNumber</string>
+					<string>objectClass</string>
 				</fetchedAttributes>
 				<getAllFilter>(&amp;(sn=*))</getAllFilter>
 				<getOneFilter>(sn={sn})</getOneFilter>
