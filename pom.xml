@@ -39,9 +39,9 @@
 	</properties>
 	<repositories>
 		<repository>
-			<id>maven.forgerock.org</id>
-			<name>maven.forgerock.org-snapshot</name>
-			<url>http://maven.forgerock.org/repo/releases</url>
+			<id>forgerock-community-repository</id>
+			<name>ForgeRock CommunityRepository</name>
+			<url>http://maven.forgerock.org/repo/community</url>
 		</repository>
 	</repositories>
 	<dependencies>
@@ -62,9 +62,10 @@
 			<version>${lsc.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.forgerock.opendj</groupId>
+			<groupId>org.forgerock.ce.opendj</groupId>
 			<artifactId>opendj-server</artifactId>
 			<version>2.6.2</version>
+			<scope>compile</scope>
 		</dependency>
 	</dependencies>
 	<build>
